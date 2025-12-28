@@ -1,68 +1,116 @@
+@import "tailwindcss";
+
+/* =========================
+   Catppuccin × Neon Blue
+   ========================= */
+
+/* Design tokens */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Backgrounds */
+  --bg-main: 17 18 23;        /* #111217 */
+  --bg-surface: 24 26 32;     /* panels */
+  --bg-elevated: 30 32 40;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Text */
+  --text-primary: 224 226 236;
+  --text-muted: 150 152 170;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  /* Accent (Neon Blue) */
+  --accent: 96 165 250;        /* blue-400 */
+  --accent-strong: 59 130 246; /* blue-500 */
+
+  /* Status */
+  --success: 74 222 128;
+  --warning: 250 204 21;
+  --danger: 248 113 113;
+}
+
+/* Global base */
+html,
+body {
+  background-color: rgb(var(--bg-main));
+  color: rgb(var(--text-primary));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+/* =========================
+   UI Preset Classes
+   ========================= */
+
+/* Panels */
+.panel {
+  background-color: rgb(var(--bg-surface));
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.panel-elevated {
+  background-color: rgb(var(--bg-elevated));
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  transition: all 150ms ease;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.btn-primary {
+  background-color: rgb(var(--accent));
+  color: #000;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.btn-primary:hover {
+  background-color: rgb(var(--accent-strong));
+  box-shadow: 0 0 16px rgba(var(--accent), 0.35);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn-ghost {
+  color: rgb(var(--text-muted));
+  background: transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-ghost:hover {
+  color: rgb(var(--accent));
+}
+
+/* Inputs */
+.input {
+  background-color: rgb(var(--bg-elevated));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: rgb(var(--text-primary));
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgb(var(--accent));
+  box-shadow: 0 0 0 2px rgba(var(--accent), 0.35);
+}
+
+/* Labels */
+.label {
+  font-size: 0.875rem;
+  color: rgb(var(--text-muted));
+}
+
+/* Scrollbars (Chromium / Electron) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent), 0.25);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent), 0.4);
 }
